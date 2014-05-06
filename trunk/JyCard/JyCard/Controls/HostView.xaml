@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="JyCard.Controls.HostView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400" Width="800" Height="599">
+    
+    <Grid x:Name="LayoutRoot">
+    	<Grid.Background>
+    		<ImageBrush Stretch="Fill" ImageSource="/Resources/Images/mainmenu.jpg"/>
+    	</Grid.Background>
+    	<Canvas HorizontalAlignment="Left" Height="520" Margin="10,69,0,0" VerticalAlignment="Top" Width="780" Opacity="0.8" Background="#FF1D1A1A">
+    		<ScrollViewer Height="206" Canvas.Left="48" Canvas.Top="54" Width="331" VerticalScrollBarVisibility="Auto">
+    			<StackPanel x:Name="HeroStackPanel" Background="Black" Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+    		</ScrollViewer>
+    		<TextBlock Height="23" Canvas.Left="46" TextWrapping="Wrap" Text="我的英雄   上场:" Canvas.Top="26" Width="91" Foreground="#FFEEE8E8"/>
+    		<Canvas Height="206" Canvas.Left="393" Canvas.Top="54" Width="377" Background="Black">
+    			<Image x:Name="HeroHead" Height="57" Canvas.Left="20" Canvas.Top="10" Width="61" Source="/Resources/Images/Heads/linghuchong.jpg"/>
+    			<StackPanel x:Name="HeroCards" Height="100" Canvas.Top="104" Width="377" Orientation="Horizontal"/>
+    			<TextBlock x:Name="HeroInfo" Height="57" Canvas.Left="86" TextWrapping="Wrap" Text="令狐冲   生命值：12 攻击力：2" Canvas.Top="10" Width="266" Foreground="#FFFF0404" FontSize="16"/>
+    			<TextBlock Height="20" Canvas.Left="20" TextWrapping="Wrap" Text="基本卡牌" Canvas.Top="82" Width="61" Foreground="#FFFFBB04"/>
+    		</Canvas>
+    		<TextBlock Height="23" Canvas.Left="393" TextWrapping="Wrap" Text="英雄详细资料" Canvas.Top="26" Width="148" Foreground="#FFEEE8E8"/>
+    		<TextBlock Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="我的卡牌池" Canvas.Top="276" Width="148" Foreground="#FFEEE8E8"/>
+    		<TextBlock Height="23" Canvas.Left="393" TextWrapping="Wrap" Text="上场卡牌" Canvas.Top="273" Width="148" Foreground="#FFEEE8E8"/>
+    		<ScrollViewer Height="214" Canvas.Left="46" Canvas.Top="296" Width="333" VerticalScrollBarVisibility="Auto">
+    			<StackPanel x:Name="CardStackPanel" Background="Black"/>
+    		</ScrollViewer>
+    		<TextBlock x:Name="SelectCardCountText" Height="25" Canvas.Left="453" TextWrapping="Wrap" Text="0" Canvas.Top="273" Width="82" Foreground="#FFFFDC00"/>
+    		<ScrollViewer Height="214" Canvas.Left="434" Canvas.Top="296" Width="332" VerticalScrollBarVisibility="Auto">
+    			<StackPanel x:Name="CurrentCardStackPanel" Background="Black" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+    		</ScrollViewer>
+    		<TextBlock x:Name="SelectHeroCountText" Height="25" Canvas.Left="142" TextWrapping="Wrap" Text="0" Canvas.Top="26" Width="82" Foreground="#FFFFDC00"/>
+    	</Canvas>
+    	<Button x:Name="StartGameButton" Content="开始一局游戏" HorizontalAlignment="Left" Height="28" Margin="240,21,0,0" VerticalAlignment="Top" Width="111" Click="StartGameButton_Click"/>
+    	<Button x:Name="BuyButton" Content="购买卡牌" HorizontalAlignment="Left" Height="28" Margin="108,21,0,0" VerticalAlignment="Top" Width="111"/>
+    	<Button x:Name="LogoutButton" Content="登出" HorizontalAlignment="Left" Height="28" Margin="659,21,0,0" VerticalAlignment="Top" Width="111"/>
+    	<TextBlock HorizontalAlignment="Left" Height="19" Margin="24,27,0,0" TextWrapping="Wrap" Text="银子" VerticalAlignment="Top" Width="34"/>
+    	<TextBlock x:Name="MoneyLabel" HorizontalAlignment="Left" Height="19" Margin="63,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Text="0"/>
+
+    </Grid>
+</UserControl>

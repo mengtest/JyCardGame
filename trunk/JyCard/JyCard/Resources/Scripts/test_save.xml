@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root account="汉家松鼠.cg" money="1000">
+  <heros>
+    <hero name="胡斐" selected="true"/>
+    <hero name="程灵素" selected="true"/>
+    <hero name="苗人凤" selected="true"/>
+    <hero name="胡一刀" selected="false"/>
+  </heros>
+
+  <cards>
+    <card name="杀" number="10" selected="5"/>
+    <card name="毒" number="5" selected="4"/>
+    <card name="解毒" number="7" selected="5"/>
+    <card name="冷月宝刀" number="2" selected="1"/>
+  </cards>
+</root>

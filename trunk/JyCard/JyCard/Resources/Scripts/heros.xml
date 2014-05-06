@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <heros>
+    <hero name="胡斐" hp="14" attack="2" pic="Heads/hufei.jpg">
+      <cards>
+        <card name="雪山飞狐" number="1"/>
+        <card name="胡家刀法" number="2"/>
+        <card name="冷月宝刀" number="1"/>
+        <card name="杀" number="1"/>
+      </cards>
+    </hero>
+
+    <hero name="程灵素" hp="10" attack="0" pic="Heads/chenglingsu.png">
+      <cards>
+        <card name="毒手药王" number="1"/>
+        <card name="七星海棠" number="1"/>
+        <card name="毒" number="2"/>
+        <card name="解毒" number="1"/>
+      </cards>
+    </hero>
+
+    <hero name="苗人凤" hp="16" attack="2" pic="Heads/miaorenfeng.png">
+      <cards>
+        <card name="打遍天下无敌手" number="1"/>
+        <card name="苗家剑法" number="2"/>
+        <card name="杀" number="2"/>
+      </cards>
+    </hero>
+
+    <hero name="胡一刀" hp="20" attack="1" pic="Heads/huyidao.png">
+      <cards>
+        <card name="雪山飞狐" number="1"/>
+        <card name="冷月宝刀" number="1"/>
+        <card name="嘲讽" number="2"/>
+        <card name="杀" number="1"/>
+      </cards>
+    </hero>
+
+  </heros>
+</root>

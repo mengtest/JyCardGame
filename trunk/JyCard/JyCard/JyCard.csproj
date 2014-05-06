@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2DB4EF0C-7065-49E7-BB0F-33BBD9735607}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JyCard</RootNamespace>
+    <AssemblyName>JyCard</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>zh-Hans</SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>JyCard.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>JyCard.App</SilverlightAppEntry>
+    <TestPageFileName>JyCardTestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <ExpressionBlendVersion>12.0.41002.1</ExpressionBlendVersion>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core">
+      <HintPath>$(TargetFrameworkDirectory)System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Linq, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Serialization, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CardView.xaml.cs">
+      <DependentUpon>CardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GameLogView.xaml.cs">
+      <DependentUpon>GameLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GameView.xaml.cs">
+      <DependentUpon>GameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HostView.xaml.cs">
+      <DependentUpon>HostView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IUIHost.cs" />
+    <Compile Include="Logic\Card.cs" />
+    <Compile Include="Logic\CardCasting.cs" />
+    <Compile Include="Logic\CommonSettings.cs" />
+    <Compile Include="Logic\CardQueue.cs" />
+    <Compile Include="Logic\GameEngine.cs" />
+    <Compile Include="Logic\GameData.cs" />
+    <Compile Include="Logic\Hero.cs" />
+    <Compile Include="Logic\RuntimeData.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="Controls\CardView.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\GameLogView.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\GameView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HostView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Audios\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Images\back.png" />
+    <Content Include="Resources\Images\back1.png" />
+    <Content Include="Resources\Images\Items\baoguo.jpg" />
+    <Content Include="Resources\Images\Items\Bdugujiujianjianpu.jpg" />
+    <Content Include="Resources\Images\Items\Bhuanyinzhizhifajingyao.jpg" />
+    <Content Include="Resources\Images\Items\bishuijian.jpg" />
+    <Content Include="Resources\Images\Items\biyezan.jpg" />
+    <Content Include="Resources\Images\Items\Bkuihuabaodian.jpg" />
+    <Content Include="Resources\Images\Items\Braozhiroujianjianpu.jpg" />
+    <Content Include="Resources\Images\Items\Bsixiangzhangquanpu.jpg" />
+    <Content Include="Resources\Images\Items\buerqiang.jpg" />
+    <Content Include="Resources\Images\Items\Byijinjing.jpg" />
+    <Content Include="Resources\Images\Items\caoyao.jpg" />
+    <Content Include="Resources\Images\Items\dahuandan.jpg" />
+    <Content Include="Resources\Images\Items\danyao.jpg" />
+    <Content Include="Resources\Images\Items\daokoushaoji.jpg" />
+    <Content Include="Resources\Images\Items\dapantao.jpg" />
+    <Content Include="Resources\Images\Items\Dcubudaopao.jpg" />
+    <Content Include="Resources\Images\Items\Dhuangjinzhongjia.jpg" />
+    <Content Include="Resources\Images\Items\dianjibaozha.jpg" />
+    <Content Include="Resources\Images\Items\Djinsidaopao.jpg" />
+    <Content Include="Resources\Images\Items\dongchongxiacao.jpg" />
+    <Content Include="Resources\Images\Items\Dwucanyi.jpg" />
+    <Content Include="Resources\Images\Items\heiyuduanxugao.jpg" />
+    <Content Include="Resources\Images\Items\hongyao.jpg" />
+    <Content Include="Resources\Images\Items\jiasha.jpg" />
+    <Content Include="Resources\Images\Items\jitui.jpg" />
+    <Content Include="Resources\Images\Items\jiuhuayuluwan.jpg" />
+    <Content Include="Resources\Images\Items\jiuzhuanxiongshewan.jpg" />
+    <Content Include="Resources\Images\Items\lingpai.png" />
+    <Content Include="Resources\Images\Items\lingpai001.jpg" />
+    <Content Include="Resources\Images\Items\longtouguaizhang.jpg" />
+    <Content Include="Resources\Images\Items\pojunpifeng.jpg" />
+    <Content Include="Resources\Images\Items\qixinghaitang.jpg" />
+    <Content Include="Resources\Images\Items\ruanbian.jpg" />
+    <Content Include="Resources\Images\Items\Scaomao.jpg" />
+    <Content Include="Resources\Images\Items\shengshengzaohuadan.jpg" />
+    <Content Include="Resources\Images\Items\Shuangjinxianglian.jpg" />
+    <Content Include="Resources\Images\Items\Shuilipaoxie.jpg" />
+    <Content Include="Resources\Images\Items\Sjintougu.jpg" />
+    <Content Include="Resources\Images\Items\Smangguzhuha.jpg" />
+    <Content Include="Resources\Images\Items\Smuren.jpg" />
+    <Content Include="Resources\Images\Items\Smuyu.jpg" />
+    <Content Include="Resources\Images\Items\songguo.jpg" />
+    <Content Include="Resources\Images\Items\Syinshouzhuo.jpg" />
+    <Content Include="Resources\Images\Items\tianwangbaomingdan.jpg" />
+    <Content Include="Resources\Images\Items\viplingpai.jpg" />
+    <Content Include="Resources\Images\Items\wanjiezhi.jpg" />
+    <Content Include="Resources\Images\Items\Wdagoubang.jpg" />
+    <Content Include="Resources\Images\Items\Wjingangchu.jpg" />
+    <Content Include="Resources\Images\Items\Wjinggangquantao.jpg" />
+    <Content Include="Resources\Images\Items\Wjinlongbian.jpg" />
+    <Content Include="Resources\Images\Items\Wjinshejian.jpg" />
+    <Content Include="Resources\Images\Items\Wjunzijian.jpg" />
+    <Content Include="Resources\Images\Items\Wkuojian.jpg" />
+    <Content Include="Resources\Images\Items\Wliuyedao.jpg" />
+    <Content Include="Resources\Images\Items\Wmiexianzhao.jpg" />
+    <Content Include="Resources\Images\Items\Wmudao.jpg" />
+    <Content Include="Resources\Images\Items\Wtulongdao.jpg" />
+    <Content Include="Resources\Images\Items\Wxuedao.jpg" />
+    <Content Include="Resources\Images\Items\Wyitianjian.jpg" />
+    <Content Include="Resources\Images\Items\Wziweiruanjian.jpg" />
+    <Content Include="Resources\Images\Items\yuanbao.png" />
+    <Content Include="Resources\Images\Items\yuebing.jpg" />
+    <Content Include="Resources\Images\Heads\abi.png" />
+    <Content Include="Resources\Images\Heads\ajiu.jpg" />
+    <Content Include="Resources\Images\Heads\ajiu01.jpg" />
+    <Content Include="Resources\Images\Heads\ajiu02.jpg" />
+    <Content Include="Resources\Images\Heads\ake.jpg" />
+    <Content Include="Resources\Images\Heads\anxiaohui.jpg" />
+    <Content Include="Resources\Images\Heads\aobai.jpg" />
+    <Content Include="Resources\Images\Heads\axiu.jpg" />
+    <Content Include="Resources\Images\Heads\azhu.jpg" />
+    <Content Include="Resources\Images\Heads\azhu2.jpg" />
+    <Content Include="Resources\Images\Heads\azi.jpg" />
+    <Content Include="Resources\Images\Heads\azi2.jpg" />
+    <Content Include="Resources\Images\Heads\baimeiyingwang.jpg" />
+    <Content Include="Resources\Images\Heads\baizizai.jpg" />
+    <Content Include="Resources\Images\Heads\baizizai.png" />
+    <Content Include="Resources\Images\Heads\banshuxian.png" />
+    <Content Include="Resources\Images\Heads\bei.png" />
+    <Content Include="Resources\Images\Heads\beichou.png" />
+    <Content Include="Resources\Images\Heads\beihaishi.png" />
+    <Content Include="Resources\Images\Heads\caizifeng.png" />
+    <Content Include="Resources\Images\Heads\cg.jpg" />
+    <Content Include="Resources\Images\Heads\changqingzi.png" />
+    <Content Include="Resources\Images\Heads\changyuchun.png" />
+    <Content Include="Resources\Images\Heads\chendahai.jpg" />
+    <Content Include="Resources\Images\Heads\chengkun.png" />
+    <Content Include="Resources\Images\Heads\chengkun2.png" />
+    <Content Include="Resources\Images\Heads\chenglingsu.png" />
+    <Content Include="Resources\Images\Heads\chenglingsu2.png" />
+    <Content Include="Resources\Images\Heads\chengying.jpg" />
+    <Content Include="Resources\Images\Heads\chenjialuo.jpg" />
+    <Content Include="Resources\Images\Heads\chenjinnan.jpg" />
+    <Content Include="Resources\Images\Heads\chenyuanyuan.jpg" />
+    <Content Include="Resources\Images\Heads\chongxudaozhang.jpg" />
+    <Content Include="Resources\Images\Heads\chuangongzhanglao.png" />
+    <Content Include="Resources\Images\Heads\chuanlaoda.jpg" />
+    <Content Include="Resources\Images\Heads\daerba.png" />
+    <Content Include="Resources\Images\Heads\daoke.jpg" />
+    <Content Include="Resources\Images\Heads\daozhang.jpg" />
+    <Content Include="Resources\Images\Heads\dingchunqiu.png" />
+    <Content Include="Resources\Images\Heads\dingdang.png" />
+    <Content Include="Resources\Images\Heads\dingminjun.jpg" />
+    <Content Include="Resources\Images\Heads\dingxian.jpg" />
+    <Content Include="Resources\Images\Heads\diyun.png" />
+    <Content Include="Resources\Images\Heads\dong.png" />
+    <Content Include="Resources\Images\Heads\dongfangbubai.jpg" />
+    <Content Include="Resources\Images\Heads\duanwangye.jpg" />
+    <Content Include="Resources\Images\Heads\duanyanqing.png" />
+    <Content Include="Resources\Images\Heads\duanyu.png" />
+    <Content Include="Resources\Images\Heads\duanzhengchun.jpg" />
+    <Content Include="Resources\Images\Heads\duanzhengchun.png" />
+    <Content Include="Resources\Images\Heads\duanziyu.png" />
+    <Content Include="Resources\Images\Heads\due.jpg" />
+    <Content Include="Resources\Images\Heads\duguqiubai.jpg" />
+    <Content Include="Resources\Images\Heads\duguqiubai.png" />
+    <Content Include="Resources\Images\Heads\duguqiubai1.jpg" />
+    <Content Include="Resources\Images\Heads\dujie.png" />
+    <Content Include="Resources\Images\Heads\dunan.png" />
+    <Content Include="Resources\Images\Heads\ershiyuanchengz.jpg" />
+    <Content Include="Resources\Images\Heads\fangyi.jpg" />
+    <Content Include="Resources\Images\Heads\fanyao.png" />
+    <Content Include="Resources\Images\Heads\feibin.png" />
+    <Content Include="Resources\Images\Heads\fengbuping.png" />
+    <Content Include="Resources\Images\Heads\fengqingyang.jpg" />
+    <Content Include="Resources\Images\Heads\fengqingyang.png" />
+    <Content Include="Resources\Images\Heads\fengtiannan.png" />
+    <Content Include="Resources\Images\Heads\fengxifan.png" />
+    <Content Include="Resources\Images\Heads\foxiang.jpg" />
+    <Content Include="Resources\Images\Heads\fudaozhu.png" />
+    <Content Include="Resources\Images\Heads\fuqinnv.png" />
+    <Content Include="Resources\Images\Heads\gaibangdizi.png" />
+    <Content Include="Resources\Images\Heads\gaiqisheng.jpg" />
+    <Content Include="Resources\Images\Heads\gongsunlve.jpg" />
+    <Content Include="Resources\Images\Heads\gongsunzhi.png" />
+    <Content Include="Resources\Images\Heads\gongzi.png" />
+    <Content Include="Resources\Images\Heads\guofu.jpg" />
+    <Content Include="Resources\Images\Heads\guojing.jpg" />
+    <Content Include="Resources\Images\Heads\guoxiang.jpg" />
+    <Content Include="Resources\Images\Heads\haidafu.jpg" />
+    <Content Include="Resources\Images\Heads\hanjiasongshu.png" />
+    <Content Include="Resources\Images\Heads\hebiweng.png" />
+    <Content Include="Resources\Images\Heads\hedaoren.JPG" />
+    <Content Include="Resources\Images\Heads\hehongyao.jpg" />
+    <Content Include="Resources\Images\Heads\heiyiren.png" />
+    <Content Include="Resources\Images\Heads\heshang.jpg" />
+    <Content Include="Resources\Images\Heads\hetaichong.png" />
+    <Content Include="Resources\Images\Heads\hetieshou.jpg" />
+    <Content Include="Resources\Images\Heads\hongqigong.png" />
+    <Content Include="Resources\Images\Heads\huanghelou.png" />
+    <Content Include="Resources\Images\Heads\huangrong.jpg" />
+    <Content Include="Resources\Images\Heads\huangshang.png" />
+    <Content Include="Resources\Images\Heads\huangshannvzi.jpg" />
+    <Content Include="Resources\Images\Heads\huangyaoshi.jpg" />
+    <Content Include="Resources\Images\Heads\huangyaoshi2.jpg" />
+    <Content Include="Resources\Images\Heads\huangzhen.jpg" />
+    <Content Include="Resources\Images\Heads\huazheng.jpg" />
+    <Content Include="Resources\Images\Heads\hufei.jpg" />
+    <Content Include="Resources\Images\Heads\huodu.png" />
+    <Content Include="Resources\Images\Heads\huoqingtong.jpg" />
+    <Content Include="Resources\Images\Heads\huyidao.png" />
+    <Content Include="Resources\Images\Heads\jianninggongzhu.jpg" />
+    <Content Include="Resources\Images\Heads\jinlunfawang.jpg" />
+    <Content Include="Resources\Images\Heads\jinshelangjun.jpg" />
+    <Content Include="Resources\Images\Heads\jiumozhi.jpg" />
+    <Content Include="Resources\Images\Heads\jiunan.jpg" />
+    <Content Include="Resources\Images\Heads\kangmaocai.jpg" />
+    <Content Include="Resources\Images\Heads\kangmin.jpg" />
+    <Content Include="Resources\Images\Heads\kangmin2.jpg" />
+    <Content Include="Resources\Images\Heads\kangmin3.jpg" />
+    <Content Include="Resources\Images\Heads\kangxi.jpg" />
+    <Content Include="Resources\Images\Heads\kezhanlaoban.png" />
+    <Content Include="Resources\Images\Heads\kongbala.png" />
+    <Content Include="Resources\Images\Heads\lanfenghuang.jpg" />
+    <Content Include="Resources\Images\Heads\langjianqiu.jpg" />
+    <Content Include="Resources\Images\Heads\langjianqiu2.jpg" />
+    <Content Include="Resources\Images\Heads\laoheshang.png" />
+    <Content Include="Resources\Images\Heads\laowantong.jpg" />
+    <Content Include="Resources\Images\Heads\laoxiangu.png" />
+    <Content Include="Resources\Images\Heads\liangfa.png" />
+    <Content Include="Resources\Images\Heads\libai.jpg" />
+    <Content Include="Resources\Images\Heads\limochou.jpg" />
+    <Content Include="Resources\Images\Heads\linghuchong.jpg" />
+    <Content Include="Resources\Images\Heads\linpingzhi.jpg" />
+    <Content Include="Resources\Images\Heads\linpingzhinvban.jpg" />
+    <Content Include="Resources\Images\Heads\linzhaoying.png" />
+    <Content Include="Resources\Images\Heads\liqingluo.png" />
+    <Content Include="Resources\Images\Heads\liqiushui.png" />
+    <Content Include="Resources\Images\Heads\lisi.png" />
+    <Content Include="Resources\Images\Heads\liulanghan.png" />
+    <Content Include="Resources\Images\Heads\liuxingganyue.jpg" />
+    <Content Include="Resources\Images\Heads\liuyan.png" />
+    <Content Include="Resources\Images\Heads\liwenxiu.png" />
+    <Content Include="Resources\Images\Heads\lizicheng.png" />
+    <Content Include="Resources\Images\Heads\longdaozhu.png" />
+    <Content Include="Resources\Images\Heads\lulianrong.png" />
+    <Content Include="Resources\Images\Heads\luobing.jpg" />
+    <Content Include="Resources\Images\Heads\luwushuang.jpg" />
+    <Content Include="Resources\Images\Heads\luzhangke.png" />
+    <Content Include="Resources\Images\Heads\machunhua.jpg" />
+    <Content Include="Resources\Images\Heads\mafuren.png" />
+    <Content Include="Resources\Images\Heads\maodongzhu.jpg" />
+    <Content Include="Resources\Images\Heads\mayu.png" />
+    <Content Include="Resources\Images\Heads\meichaofeng.jpg" />
+    <Content Include="Resources\Images\Heads\meichaofeng2.jpg" />
+    <Content Include="Resources\Images\Heads\meijian.png" />
+    <Content Include="Resources\Images\Heads\meiniansheng.png" />
+    <Content Include="Resources\Images\Heads\mengge.jpg" />
+    <Content Include="Resources\Images\Heads\miaorenfeng.jpg" />
+    <Content Include="Resources\Images\Heads\miaorenfeng.png" />
+    <Content Include="Resources\Images\Heads\miaoruolan.jpg" />
+    <Content Include="Resources\Images\Heads\miejueshitai.png" />
+    <Content Include="Resources\Images\Heads\minnv.png" />
+    <Content Include="Resources\Images\Heads\minnv2.png" />
+    <Content Include="Resources\Images\Heads\moda.jpg" />
+    <Content Include="Resources\Images\Heads\moshenggu.png" />
+    <Content Include="Resources\Images\Heads\mudaozhu.png" />
+    <Content Include="Resources\Images\Heads\mujianping.jpg" />
+    <Content Include="Resources\Images\Heads\murenqing.png" />
+    <Content Include="Resources\Images\Heads\murenqing2.png" />
+    <Content Include="Resources\Images\Heads\murongbo.png" />
+    <Content Include="Resources\Images\Heads\murongfu.jpg" />
+    <Content Include="Resources\Images\Heads\murongfu.png" />
+    <Content Include="Resources\Images\Heads\murongfu2.jpg" />
+    <Content Include="Resources\Images\Heads\musangdaoren.png" />
+    <Content Include="Resources\Images\Heads\muwanqing.jpg" />
+    <Content Include="Resources\Images\Heads\muwanqing2.jpg" />
+    <Content Include="Resources\Images\Heads\muyangnv.jpg" />
+    <Content Include="Resources\Images\Heads\nan.png" />
+    <Content Include="Resources\Images\Heads\nanlan.jpg" />
+    <Content Include="Resources\Images\Heads\nanxian.png" />
+    <Content Include="Resources\Images\Heads\nanzi.png" />
+    <Content Include="Resources\Images\Heads\niesangqing.jpg" />
+    <Content Include="Resources\Images\Heads\ningqingyu.png" />
+    <Content Include="Resources\Images\Heads\nongfu.png" />
+    <Content Include="Resources\Images\Heads\ouyangfeng.jpg" />
+    <Content Include="Resources\Images\Heads\ouyangfeng2.jpg" />
+    <Content Include="Resources\Images\Heads\ouyangke.png" />
+    <Content Include="Resources\Images\Heads\pengheshang.png" />
+    <Content Include="Resources\Images\Heads\pingyizhi.png" />
+    <Content Include="Resources\Images\Heads\qianlong.jpg" />
+    <Content Include="Resources\Images\Heads\qianlong2.jpg" />
+    <Content Include="Resources\Images\Heads\qiaofu.png" />
+    <Content Include="Resources\Images\Heads\qinhongmian.jpg" />
+    <Content Include="Resources\Images\Heads\qinpopo.png" />
+    <Content Include="Resources\Images\Heads\qiuchuji.png" />
+    <Content Include="Resources\Images\Heads\qufeiyan.jpg" />
+    <Content Include="Resources\Images\Heads\renwoxing.png" />
+    <Content Include="Resources\Images\Heads\renyingying.jpg" />
+    <Content Include="Resources\Images\Heads\renyingying2.jpg" />
+    <Content Include="Resources\Images\Heads\ruanxingzhu.jpg" />
+    <Content Include="Resources\Images\Heads\saodiseng.png" />
+    <Content Include="Resources\Images\Heads\shangbaozheng.png" />
+    <Content Include="Resources\Images\Heads\shangguanyun.png" />
+    <Content Include="Resources\Images\Heads\shaonv1.png" />
+    <Content Include="Resources\Images\Heads\shaonv2.png" />
+    <Content Include="Resources\Images\Heads\shaonv3.png" />
+    <Content Include="Resources\Images\Heads\shendiao.jpg" />
+    <Content Include="Resources\Images\Heads\shenmiren.png" />
+    <Content Include="Resources\Images\Heads\shibi.jpg" />
+    <Content Include="Resources\Images\Heads\shibing.jpg" />
+    <Content Include="Resources\Images\Heads\shipopo.jpg" />
+    <Content Include="Resources\Images\Heads\shipotian.jpg" />
+    <Content Include="Resources\Images\Heads\shiqing.png" />
+    <Content Include="Resources\Images\Heads\shizhongyu.png" />
+    <Content Include="Resources\Images\Heads\shuanger.jpg" />
+    <Content Include="Resources\Images\Heads\shuangshoukaibei.jpg" />
+    <Content Include="Resources\Images\Heads\shuisheng.png" />
+    <Content Include="Resources\Images\Heads\shusheng.jpg" />
+    <Content Include="Resources\Images\Heads\songyuanqiao.png" />
+    <Content Include="Resources\Images\Heads\sunbuer.png" />
+    <Content Include="Resources\Images\Heads\suquan.jpg" />
+    <Content Include="Resources\Images\Heads\suxinghe.png" />
+    <Content Include="Resources\Images\Heads\taihou.jpg" />
+    <Content Include="Resources\Images\Heads\tianboguang.jpg" />
+    <Content Include="Resources\Images\Heads\tianboguang.png" />
+    <Content Include="Resources\Images\Heads\tianguinong.png" />
+    <Content Include="Resources\Images\Heads\tianqingwen.jpg" />
+    <Content Include="Resources\Images\Heads\tianshantonglao.jpg" />
+    <Content Include="Resources\Images\Heads\tianshantonglao.png" />
+    <Content Include="Resources\Images\Heads\tianyi.png" />
+    <Content Include="Resources\Images\Heads\tuboshu.png" />
+    <Content Include="Resources\Images\Heads\waerlaqi.jpg" />
+    <Content Include="Resources\Images\Heads\wangchongyang.jpg" />
+    <Content Include="Resources\Images\Heads\wangchongyang.png" />
+    <Content Include="Resources\Images\Heads\wangjialaoye.png" />
+    <Content Include="Resources\Images\Heads\wangnangu.jpg" />
+    <Content Include="Resources\Images\Heads\wangye.png" />
+    <Content Include="Resources\Images\Heads\wangyuyan.jpg" />
+    <Content Include="Resources\Images\Heads\weixiaobao.jpg" />
+    <Content Include="Resources\Images\Heads\weiyixiao.jpg" />
+    <Content Include="Resources\Images\Heads\wenqingqing.jpg" />
+    <Content Include="Resources\Images\Heads\wenqingqing2.jpg" />
+    <Content Include="Resources\Images\Heads\wusangui.jpg" />
+    <Content Include="Resources\Images\Heads\wuyazi.jpg" />
+    <Content Include="Resources\Images\Heads\xi.png" />
+    <Content Include="Resources\Images\Heads\xiangu.png" />
+    <Content Include="Resources\Images\Heads\xiangwentian.jpg" />
+    <Content Include="Resources\Images\Heads\xiangwentian.png" />
+    <Content Include="Resources\Images\Heads\xiangxianggongzhu.jpg" />
+    <Content Include="Resources\Images\Heads\xiaobing.png" />
+    <Content Include="Resources\Images\Heads\xiaobing2.png" />
+    <Content Include="Resources\Images\Heads\xiaobing3.png" />
+    <Content Include="Resources\Images\Heads\xiaofeng.jpg" />
+    <Content Include="Resources\Images\Heads\xiaofeng2.jpg" />
+    <Content Include="Resources\Images\Heads\xiaohai.png" />
+    <Content Include="Resources\Images\Heads\xiaolongnv.jpg" />
+    <Content Include="Resources\Images\Heads\xiaoxuanzi.jpg" />
+    <Content Include="Resources\Images\Heads\xiaoyaozi.png" />
+    <Content Include="Resources\Images\Heads\xiaoyuanshan.png" />
+    <Content Include="Resources\Images\Heads\xiaozhao.jpg" />
+    <Content Include="Resources\Images\Heads\xiaozhao2.jpg" />
+    <Content Include="Resources\Images\Heads\xiaozhonghui.png" />
+    <Content Include="Resources\Images\Heads\xiexun.jpg" />
+    <Content Include="Resources\Images\Heads\xiexun.png" />
+    <Content Include="Resources\Images\Heads\xiexunnianqing.jpg" />
+    <Content Include="Resources\Images\Heads\xieyanke.png" />
+    <Content Include="Resources\Images\Heads\xixianv.png" />
+    <Content Include="Resources\Images\Heads\xuda.png" />
+    <Content Include="Resources\Images\Heads\xuedaolaozu.png" />
+    <Content Include="Resources\Images\Heads\xuedaomen_baoxiang.png" />
+    <Content Include="Resources\Images\Heads\xuedaomen_shanyong.png" />
+    <Content Include="Resources\Images\Heads\xuedaomen_shengdi.png" />
+    <Content Include="Resources\Images\Heads\xuzhu.jpg" />
+    <Content Include="Resources\Images\Heads\yangbinger.png" />
+    <Content Include="Resources\Images\Heads\yangbinger2.png" />
+    <Content Include="Resources\Images\Heads\yangguo.jpg" />
+    <Content Include="Resources\Images\Heads\yangguo2.jpg" />
+    <Content Include="Resources\Images\Heads\yangxiao.png" />
+    <Content Include="Resources\Images\Heads\yanji.jpg" />
+    <Content Include="Resources\Images\Heads\yanxiashenlong.jpg" />
+    <Content Include="Resources\Images\Heads\yeerniang.png" />
+    <Content Include="Resources\Images\Heads\yilin.jpg" />
+    <Content Include="Resources\Images\Heads\yingtianzheng.png" />
+    <Content Include="Resources\Images\Heads\yingzhiping.png" />
+    <Content Include="Resources\Images\Heads\yinli.jpg" />
+    <Content Include="Resources\Images\Heads\yinliting.png" />
+    <Content Include="Resources\Images\Heads\youtanzhi.jpg" />
+    <Content Include="Resources\Images\Heads\youtanzhi2.jpg" />
+    <Content Include="Resources\Images\Heads\youxun.png" />
+    <Content Include="Resources\Images\Heads\yuanchengzhi.jpg" />
+    <Content Include="Resources\Images\Heads\yuanchengzhi2.jpg" />
+    <Content Include="Resources\Images\Heads\yuanguannan.png" />
+    <Content Include="Resources\Images\Heads\yuanziyi.jpg" />
+    <Content Include="Resources\Images\Heads\yucanghai.jpg" />
+    <Content Include="Resources\Images\Heads\yudaiyan.png" />
+    <Content Include="Resources\Images\Heads\yuebuqun.png" />
+    <Content Include="Resources\Images\Heads\yuelingshan.jpg" />
+    <Content Include="Resources\Images\Heads\yuelingshan.png" />
+    <Content Include="Resources\Images\Heads\yulianzhou.png" />
+    <Content Include="Resources\Images\Heads\yunzhonghe.png" />
+    <Content Include="Resources\Images\Heads\zengrou.jpg" />
+    <Content Include="Resources\Images\Heads\zhangcuishan.png" />
+    <Content Include="Resources\Images\Heads\zhangmen1.png" />
+    <Content Include="Resources\Images\Heads\zhangmen2.png" />
+    <Content Include="Resources\Images\Heads\zhangsan.png" />
+    <Content Include="Resources\Images\Heads\zhangsanfeng.png" />
+    <Content Include="Resources\Images\Heads\zhangsongxi.png" />
+    <Content Include="Resources\Images\Heads\zhangwuji.jpg" />
+    <Content Include="Resources\Images\Heads\zhangzhaochong.png" />
+    <Content Include="Resources\Images\Heads\zhangzhe.jpg" />
+    <Content Include="Resources\Images\Heads\zhaomin.jpg" />
+    <Content Include="Resources\Images\Heads\zhaomin2.jpg" />
+    <Content Include="Resources\Images\Heads\zhaozhijing.jpg" />
+    <Content Include="Resources\Images\Heads\zhengkeshuang.png" />
+    <Content Include="Resources\Images\Heads\zhifazhanglao.png" />
+    <Content Include="Resources\Images\Heads\zhongasi.png" />
+    <Content Include="Resources\Images\Heads\zhongling.jpg" />
+    <Content Include="Resources\Images\Heads\zhouzhiruo.jpg" />
+    <Content Include="Resources\Images\Heads\zhuangjuxian.png" />
+    <Content Include="Resources\Images\Heads\zhujiuzhen.jpg" />
+    <Content Include="Resources\Images\Heads\zhujue.png" />
+    <Content Include="Resources\Images\Heads\zhuotianxiong.png" />
+    <Content Include="Resources\Images\Heads\zhuyuanzhangjinwei.jpg" />
+    <Content Include="Resources\Images\Heads\zishanlongwang.jpg" />
+    <Content Include="Resources\Images\Heads\ziyin.jpg" />
+    <Content Include="Resources\Images\Heads\zuolengchan.png" />
+    <Content Include="Resources\Images\mainmenu.jpg" />
+    <Content Include="Resources\Images\background.png" />
+    <Content Include="Resources\Images\Maps\dilao.jpg" />
+    <Content Include="Resources\Images\Skills\sha.png" />
+    <Content Include="Resources\Images\Skills\duyao-skill-6.png" />
+    <Content Include="Resources\Images\Skills\hujiadaofa-skill-4.png" />
+    <Content Include="Resources\Images\Skills\miaojiajianfa-skill-2.png" />
+    <Content Include="Resources\Images\UI-kuang2.png" />
+    <Resource Include="Resources\Scripts\test_save2.xml" />
+    <Resource Include="Resources\Scripts\test_save.xml" />
+    <Resource Include="Resources\Scripts\cards.xml" />
+    <Resource Include="Resources\Scripts\heros.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

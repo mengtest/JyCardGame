@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+name 卡牌名
+cost 消耗内力值
+pic 图片地址
+point 是否指向性，默认是true
+  self 是否能够对己方使用，默认否（只有在point=true时有效）
+  target 是否能对敌方使用，默认是（只有在point=true时有效）
+equippment 是否是装备，默认是false
+desc 介绍
+max 最大携带数量，默认为1
+-->
+<root>
+  <cards>
+    <card name="雪山飞狐" cost="8" pic="Heads/hufei.jpg" point="false" desc="我方所有英雄获得50%闪避，持续2个回合。" />
+    <card name="胡家刀法" cost="5" pic="Skills/hujiadaofa-skill-4.png" point="false" desc="对场上所有敌方单位造成2点伤害，若己方有英雄装备了冷月宝刀，立刻抽一张牌。"/>
+    <card name="冷月宝刀" cost="4" pic="Items/Wtulongdao.jpg" self="true" target="false" equippment="true" desc="装备，英雄攻击力+2。"/>
+    <card name="杀" cost="3" pic="Skills/sha.png" desc="场上所有英雄攻击力相加，对指定敌方单位攻击。" max="5"/>
+    <card name="毒手药王" cost="10" pic="Heads/chenglingsu.png" point="false" desc="立刻清算（兑现）所有敌方中毒单位。敌方所有单位中毒，每回合-2，持续2个回合，下回合生效。"/>
+    <card name="七星海棠" cost="6" pic="Items/qixinghaitang.jpg" desc="指定单位立刻受到3点伤害，并中毒，每回合-2，持续3个回合，立刻生效。"/>
+    <card name="毒" cost="3" pic="Skills/duyao-skill-6.png" desc="指定单位中毒，每回合-2，持续2个回合，下回合生效。" max="5"/>
+    <card name="解毒" cost="1" pic="Items/caoyao.jpg" self="true" target="false" desc="立刻解除单位中毒。" max="5"/>
+    <card name="打遍天下无敌手" cost="6" pic="Heads/miaorenfeng.png" point="false" desc="苗人凤攻击力+4，持续2个回合（若苗人凤死亡，无效果）。"/>
+    <card name="苗家剑法" cost="2" pic="Skills/miaojiajianfa-skill-2.png" desc="苗人凤立刻攻击某个敌方单位（若苗人凤死亡，无效果）。"/>
+    <card name="嘲讽" cost="2" self="true" target="false" pic="Heads/zhuyuanzhangjinwei.jpg" desc="敌方单体攻击必须攻击施放嘲讽目标，持续2个回合。"/>
+  </cards>
+</root>
